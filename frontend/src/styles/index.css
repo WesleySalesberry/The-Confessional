@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+.title {
+  font-family: 'Corinthia', cursive;
+}
+
+.notes {
+  font-family: 'Caveat Brush', cursive;
+}
+
+.nav-icon {
+  font-size: 35px;
+}
+
+.facebook {
+  color: #3b5998;
+}
+
+.twitter {
+  color: #00acee;
+}
+
+.note_card {
+  width: 19rem;
+}
+
+.card_title {
+  width: 10rem;
+}
+
+.dream {
+  background-color: #00acee;
+}
+
+.fantasies {
+  background-color: #4ade80;
+}
+
+.first_experience {
+  background-color: #14532d;
+}
+
+.quilt {
+  background-color: #ef4444;
+}
+
+.lie {
+  background-color: #fb923c;
+}
+
+.pain {
+  background-color: #9f1239;
+}
+
+.random {
+  background-color: #581c87;
+}
+
+.truth {
+  background-color: #fb7185;
+}
+
+.experiences {
+  background-color: #312e81
+}
+
+.other {
+  background-color: #134e4a;
+}
+
+
+
+.link {
+  text-decoration: none;
+}
