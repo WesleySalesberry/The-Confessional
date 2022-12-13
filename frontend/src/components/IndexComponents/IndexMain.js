@@ -1,9 +1,22 @@
+import { NoteCard } from '../Cards/NoteCard'
 import { BaseLayout } from '../Layouts/BaseLayout'
+import { CardLayout } from '../Layouts/CardLayout'
+import CardData from '../Data/CardData.json'
+import Col from 'react-bootstrap/esm/Col'
 
 export const IndexMain = () => {
   return (
     <BaseLayout>
-      <h3>Hello from index main</h3>
+      <CardLayout>
+        {
+          CardData.map(itm => (
+            <NoteCard
+              key={itm.id}
+              itm={itm}
+            />
+          ))
+        }
+      </CardLayout>
     </BaseLayout>
   )
 }
