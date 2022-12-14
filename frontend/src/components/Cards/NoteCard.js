@@ -26,7 +26,7 @@ export const NoteCard = ({ itm }) => {
       </Row>
       <Card.Body>
         <Link
-          to=""
+          to={`/${itm.category}/${itm.id}`}
           className="link"
         >
           {truncateText(itm.body, 5)}

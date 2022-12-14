@@ -1,11 +1,11 @@
 import { BaseLayout } from "../components/Layouts/BaseLayout"
 import { Meta } from "../components/metatags"
 
-export const AboutPage = () => {
+export const ContactPage = () => {
   return (
     <BaseLayout >
       <Meta
-        title="About The Confessional"
+        title="Contact The Confessional"
         url={window.location.href }
       />
     </BaseLayout>
