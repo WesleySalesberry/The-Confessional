@@ -18,13 +18,13 @@ export const HeaderBar = () => {
         <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
           <Nav className="me-auto">
-            <LinkContainer to="/">
+            <LinkContainer to="/about">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/privacy">
               <Nav.Link>Privacy</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/contact">
               <Nav.Link>Contact</Nav.Link>
             </LinkContainer>
           </Nav>
