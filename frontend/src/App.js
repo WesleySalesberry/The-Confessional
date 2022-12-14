@@ -8,7 +8,9 @@ import { ConfessionPage } from "./pages/ConfessionPage";
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<IndexPage />} />
+      <Route path="/" element={<IndexPage />}>
+        <Route path="/:category" element={<IndexPage />}/>
+      </Route>
       <Route path="/about" element={<AboutPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/contact" element={<ContactPage /> } />
