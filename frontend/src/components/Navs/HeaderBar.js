@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 export const HeaderBar = () => {
   const [ search, setSearch ] = useState('');
-  console.log(search)
   return (
     <Navbar>
       <Container fluid>
