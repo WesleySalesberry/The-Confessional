@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
+import moment from 'moment'
 
 import { FaRegEye, FaCommentDots } from "react-icons/fa";
 
@@ -17,24 +18,32 @@ export const NoteCard = ({ itm }) => {
       <Row>
         <Col>
           <div className={`badge card_title ${itm.category}`}>
-            <Card.Title>{ removeUnderscores(itm.category) }</Card.Title>
+            <Link
+              to={`/${itm.category}`}
+              className="link text-white"
+            >
+              <Card.Title>
+                { removeUnderscores(itm.category) }
+              </Card.Title>
+            </Link>
           </div>
         </Col>
         <Col>
-          1 hour ago
+          { moment(itm.createdAt).fromNow() }
         </Col>
       </Row>
       <Card.Body>
         <Link
-          to={`/${itm.category}/${itm.id}`}
+          to={`/${itm.category}/${itm.confession_id}`}
           className="link"
+          state={{ id: itm._id }}
         >
           {truncateText(itm.body, 5)}
         </Link>
       </Card.Body>
       <Row>
         <Col md={6} className="text-center">
-          <FaRegEye /> 6
+          <FaRegEye /> {itm.views >= 0 ? itm.views : 'No Views'}
         </Col>
         <Col md={6} className="text-center">
           <FaCommentDots /> 5
