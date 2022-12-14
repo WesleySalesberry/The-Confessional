@@ -7,7 +7,8 @@ const ConfessionSchema = mongoose.Schema({
   category: {
     type: String,
     required: [true, 'Select your category'],
-    trim: true
+    trim: true,
+    lowercase: true
   }, 
   body: {
     type: String,
