@@ -5,33 +5,37 @@ import DropDownData from './DropDownData.json'
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/esm/Container';
-
+import { usePostConfessions } from '../../Hooks/usePostConfession';
 
 
 export const ConfessionForm = () => {
   const [ category, setCategory ] = useState('');
   const [ body, setBody ] = useState('')
 
+  const { postConfessions, message, isLoading, error } = usePostConfessions();
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(body)
-    console.log(category)
+
+    postConfessions(category, body);
+
     setBody('')
     setCategory('')
   }
+  
+  if(message){
+    return (
+      <h1>{ message }</h1>
+    )
+  }
 
   return (
-    <div className="my-3 py-3 px-3 bg-white w-100 rounded">
-    <Form 
-      onSubmit={handleSubmit}
-      className="bg-white"
-    >
+    <div className="my-3">
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Select
           value={category} 
           onChange={(evt => setCategory(evt.target.value))}
-          className="bg-white rounded border border-dark"
         >
           <option>Categories</option>
           {
@@ -54,7 +58,6 @@ export const ConfessionForm = () => {
           placeholder="Leave Your Confession here"
           value={body}
           onChange={(evt) => setBody(evt.target.value)}
-          className="bg-white rounded border border-dark"
         />
       </Form.Group>
       <Button 
