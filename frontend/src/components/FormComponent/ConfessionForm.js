@@ -25,10 +25,15 @@ export const ConfessionForm = () => {
   }
 
   return (
-    <div className="my-3">
+    <div className="mt-1 border border-danger rounded">
       {
         message ? 
-          <Alert variant="success">{ message }</Alert>
+          <Alert 
+            variant="success"
+            className="text-center rounded"
+          >
+            { message }
+          </Alert>
         : 
           null
       }
@@ -38,11 +43,15 @@ export const ConfessionForm = () => {
         : 
           null
       }
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3">
+    <Form 
+      onSubmit={handleSubmit}
+      className="py-3 px-3 rounded bg-white"
+    >
+      <Form.Group className="my-3 bg-white rounded">
         <Form.Select
           value={category} 
           onChange={(evt => setCategory(evt.target.value))}
+          className="bg-white rounded border border-primary"
         >
           <option>Categories</option>
           {
@@ -58,13 +67,14 @@ export const ConfessionForm = () => {
           }
         </Form.Select>
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3 bg-white rounded border border-primary">
         <Form.Label>Confession</Form.Label>
         <Form.Control
           as="textarea"
           placeholder="Leave Your Confession here"
           value={body}
           onChange={(evt) => setBody(evt.target.value)}
+          className="bg-white rounded"
         />
       </Form.Group>
       <Button 
@@ -72,6 +82,7 @@ export const ConfessionForm = () => {
         type="submit"
         size="sm"
         className="rounded w-100"
+        disabled={body !== '' && category !== '' ? false : true}
       >
         Confess
       </Button>
