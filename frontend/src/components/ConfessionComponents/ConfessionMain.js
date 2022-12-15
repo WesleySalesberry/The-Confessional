@@ -1,4 +1,4 @@
-import { Badge, Card, Col, Container, Row } from "react-bootstrap"
+import { Card, Col, Row } from "react-bootstrap"
 import { BaseLayout } from "../Layouts/BaseLayout"
 import { Meta } from '../metatags'
 
