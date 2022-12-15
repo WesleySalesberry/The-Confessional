@@ -13,11 +13,11 @@ export const NoteCard = ({ itm }) => {
   return (
     <Col>
       <Card
-        className="note_card"
+        className="note_card rounded"
       >
       <Row>
         <Col>
-          <div className={`badge card_title ${itm.category}`}>
+          <div className={`badge card_title rounded ${itm.category}`}>
             <Link
               to={`/${itm.category}`}
               className="link text-white"
