@@ -13,7 +13,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins+Sans:ital,wght@0,600;1,600&display=swap');
 
 :root {
   --bs-blue: #007bff;
@@ -67,7 +66,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #55595c;
-  --bs-body-bg: #fff;
+  --bs-body-bg: #f5f5f5;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #eceeef;
