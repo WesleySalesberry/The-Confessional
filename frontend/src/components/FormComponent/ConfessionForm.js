@@ -12,7 +12,7 @@ import { usePostConfessions } from '../../Hooks/usePostConfession';
 export const ConfessionForm = () => {
   const [ category, setCategory ] = useState('');
   const [ body, setBody ] = useState('')
- 
+
   const { postConfessions, message, isLoading, error } = usePostConfessions();
 
   const handleSubmit = (evt) => {
