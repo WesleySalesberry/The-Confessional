@@ -74,3 +74,8 @@
 .link {
   text-decoration: none;
 }
+
+textarea {
+  resize: none;
+  max-height: 500px;
+}
