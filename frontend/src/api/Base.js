@@ -39,8 +39,6 @@ export class Base {
         })
     }
 
-    async update(endpoint, opt = {}) { }
-
     async delete(endpoint, opt = {}) { 
         return await this.#fetchData(endpoint, {
             ...opt,
