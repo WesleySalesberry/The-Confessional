@@ -22,12 +22,16 @@ export const ConfessionForm = () => {
   }
 
   return (
-    <div className="my-3">
-    <Form onSubmit={handleSubmit}>
+    <div className="my-3 py-3 px-3 bg-white w-100 rounded">
+    <Form 
+      onSubmit={handleSubmit}
+      className="bg-white"
+    >
       <Form.Group className="mb-3">
         <Form.Select
           value={category} 
           onChange={(evt => setCategory(evt.target.value))}
+          className="bg-white rounded border border-dark"
         >
           <option>Categories</option>
           {
@@ -50,6 +54,7 @@ export const ConfessionForm = () => {
           placeholder="Leave Your Confession here"
           value={body}
           onChange={(evt) => setBody(evt.target.value)}
+          className="bg-white rounded border border-dark"
         />
       </Form.Group>
       <Button 
