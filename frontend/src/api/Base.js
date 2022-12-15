@@ -3,16 +3,11 @@ export class Base {
     #baseOpt;
     #headers;
     constructor() {
-        this.#baseUrl = `http://localhost:3001/api/v1/`
+        this.#baseUrl = `http://localhost:3001/api/v1`
         this.#headers = {
             'Content-Type': 'application/json'
         }
         this.#baseOpt = {}
-    }
-
-    setBearerAuth(token) {
-        this.#headers.Authorization = `Bearer ${token}`;
-        return this;
     }
 
     async #fetchData(endpoint, opt = {}) {
@@ -43,8 +38,6 @@ export class Base {
             body: JSON.stringify(body)
         })
     }
-
-    async update(endpoint, opt = {}) { }
 
     async delete(endpoint, opt = {}) { 
         return await this.#fetchData(endpoint, {

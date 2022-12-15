@@ -1,51 +1,69 @@
-import { Badge, Card, Col, Container, Row } from "react-bootstrap"
+import { Card, Col, Row } from "react-bootstrap"
 import { BaseLayout } from "../Layouts/BaseLayout"
 import { Meta } from '../metatags'
 
 import { FaRegEye, FaCommentDots } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useGetConfession } from "../../Hooks/useGetConfession";
+import { useEffect } from "react";
 
 export const ConfessionMain = () => {
+  const { id } = useLocation().state
   const navigate = useNavigate();
-  return (
-    <BaseLayout>
-      <Meta 
-        title="Category"
-        description="A excerpt of the confession"
-        url={window.location.href}
-      />
-      <Card className="rounded shadow-sm">
-        <Row className="mx-3 mt-3">
-          <Col>
-            <span className="btn btn-primary rounded" onClick={() => navigate(-1)}>Back</span>
-          </Col>
-          <Col className="text-center">
-            <Link
-                to="/"
+
+  const { getConfession, confession, isLoading, error } = useGetConfession();
+
+  useEffect(() => {
+    getConfession(id)
+  },[])
+
+  if(!isLoading){
+    return (
+      <BaseLayout>
+        <Meta 
+          title="Category"
+          description="A excerpt of the confession"
+          url={window.location.href}
+        />
+        <Card className="rounded shadow-sm">
+          <Row className="mx-3 mt-3">
+            <Col>
+              <span className="btn btn-primary rounded" onClick={() => navigate(-1)}>Back</span>
+            </Col>
+            <Col className="text-center">
+              <Link
+                to={`/${confession.category}`}
                 className="link"
               >
-              <div className={`badge card_title rounded lie`}>
-                lie
-              </div>
-            </Link>
-          </Col>
-        </Row>
-      
-        <div class="px-4 py-5 my-5 text-center">
-          <div class="col-lg-6 mx-auto">
-            Spicy jalapeno bacon ipsum dolor amet chislic picanha tail, boudin ball tip corned beef ham hock alcatra porchetta chuck pancetta beef ribs fatback flank salami. Fatback leberkas kevin tenderloin alcatra landjaeger kielbasa spare ribs shankle jowl pork loin sirloin. Meatball kielbasa sausage tenderloin ham hock tri-tip turkey salami. Ground round swine cupim, corned beef cow fatback tail.
+                <div className={`badge card_title rounded ${confession.category}`}>
+                  { confession.category }
+                </div>
+              </Link>
+            </Col>
+          </Row>
+        
+          <div className="px-4 py-5 my-5 text-center">
+            <div className="col-lg-6 mx-auto">
+              { confession.body }
+            </div>
           </div>
-        </div>
-        <Row className="mb-2">
-          <Col className="text-center">
-            <FaRegEye /> 6
-          </Col>
-          <Col className="text-center">
-            <FaCommentDots /> 5
-          </Col>
-        </Row>
-      </Card>
-    </BaseLayout>
-  )
+          <Row className="mb-2">
+            <Col className="text-center">
+              <FaRegEye /> { confession.views }
+            </Col>
+            <Col className="text-center">
+              <FaCommentDots /> 5
+            </Col>
+          </Row>
+        </Card>
+      </BaseLayout>
+    )
+  }else{
+    return(
+      <BaseLayout>
+        <p>Content Is Loading..</p>
+      </BaseLayout>
+    )
+  }
 }

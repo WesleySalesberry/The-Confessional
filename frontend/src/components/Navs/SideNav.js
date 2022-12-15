@@ -1,19 +1,28 @@
+import { Link } from "react-router-dom";
+
 import Nav from 'react-bootstrap/Nav';
+import SideNavData from './SideNavData.json'
+import { removeUnderscores } from "../../utils/helpers";
 
 export const SideNav = () => {
   return (
-    <Nav className="navbar navbar-expand-lg navbar-dark border border-secondary rounded">
+    <Nav className="navbar bg-white border border-secondary rounded ">
       <ul className="navbar-nav flex-column text-start">
-        <li className="nav-item">dream</li>
-        <li className="nav-item">fantasies</li>
-        <li className="nav-item">first experience</li>
-        <li className="nav-item">quilt</li>
-        <li className="nav-item">lies</li>
-        <li className="nav-item">pain</li>
-        <li className="nav-item">random</li>
-        <li className="nav-item">truth</li>
-        <li className="nav-item">experiences</li>
-        <li className="nav-item">other</li>
+        {
+          SideNavData.map(itm => (
+            <li 
+              className="nav-item"
+              key={itm.value}
+            >
+              <Link
+                to={`${itm.link}`}
+                className="link"
+              >
+                { removeUnderscores(itm.title)}
+              </Link>
+            </li>
+          ))
+        }
       </ul>
     </Nav>
   )
