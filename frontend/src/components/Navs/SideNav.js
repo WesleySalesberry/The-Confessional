@@ -6,7 +6,7 @@ import { removeUnderscores } from "../../utils/helpers";
 
 export const SideNav = () => {
   return (
-    <Nav className="navbar navbar-expand-lg navbar-dark border border-secondary rounded">
+    <Nav className="navbar bg-white border border-secondary rounded ">
       <ul className="navbar-nav flex-column text-start">
         {
           SideNavData.map(itm => (
