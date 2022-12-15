@@ -1,17 +1,18 @@
 import { useState } from 'react';
 
-import { capitalizeFirstLetter } from '../../utils/helpers';
-import DropDownData from './DropDownData.json'
-
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
+import { capitalizeFirstLetter } from '../../utils/helpers';
+import DropDownData from './DropDownData.json'
 import { usePostConfessions } from '../../Hooks/usePostConfession';
 
 
 export const ConfessionForm = () => {
   const [ category, setCategory ] = useState('');
   const [ body, setBody ] = useState('')
-  console.log("test")
+ 
   const { postConfessions, message, isLoading, error } = usePostConfessions();
 
   const handleSubmit = (evt) => {
@@ -25,6 +26,18 @@ export const ConfessionForm = () => {
 
   return (
     <div className="my-3">
+      {
+        message ? 
+          <Alert variant="success">{ message }</Alert>
+        : 
+          null
+      }
+      {
+        error ? 
+          <Alert variant="danger">{ error }</Alert>
+        : 
+          null
+      }
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Select
