@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-import { capitalizeFirstLetter } from '../../utils/helpers';
-import DropDownData from './DropDownData.json'
-
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
+import { capitalizeFirstLetter } from '../../utils/helpers';
+import DropDownData from './DropDownData.json'
 import { usePostConfessions } from '../../Hooks/usePostConfession';
 
 
@@ -22,20 +23,35 @@ export const ConfessionForm = () => {
     setBody('')
     setCategory('')
   }
-  
-  if(message){
-    return (
-      <h1>{ message }</h1>
-    )
-  }
 
   return (
-    <div className="my-3">
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3">
+    <div className="mt-1 border border-danger rounded">
+      {
+        message ? 
+          <Alert 
+            variant="success"
+            className="text-center rounded"
+          >
+            { message }
+          </Alert>
+        : 
+          null
+      }
+      {
+        error ? 
+          <Alert variant="danger">{ error }</Alert>
+        : 
+          null
+      }
+    <Form 
+      onSubmit={handleSubmit}
+      className="py-3 px-3 rounded bg-white"
+    >
+      <Form.Group className="my-3 bg-white rounded">
         <Form.Select
           value={category} 
           onChange={(evt => setCategory(evt.target.value))}
+          className="bg-white rounded border border-primary"
         >
           <option>Categories</option>
           {
@@ -51,13 +67,14 @@ export const ConfessionForm = () => {
           }
         </Form.Select>
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3 bg-white rounded border border-primary">
         <Form.Label>Confession</Form.Label>
         <Form.Control
           as="textarea"
           placeholder="Leave Your Confession here"
           value={body}
           onChange={(evt) => setBody(evt.target.value)}
+          className="bg-white rounded"
         />
       </Form.Group>
       <Button 
@@ -65,6 +82,7 @@ export const ConfessionForm = () => {
         type="submit"
         size="sm"
         className="rounded w-100"
+        disabled={body !== '' && category !== '' ? false : true}
       >
         Confess
       </Button>
