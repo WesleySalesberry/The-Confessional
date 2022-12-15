@@ -22,12 +22,6 @@ export const ConfessionForm = () => {
     setBody('')
     setCategory('')
   }
-  
-  if(message){
-    return (
-      <h1>{ message }</h1>
-    )
-  }
 
   return (
     <div className="my-3">
