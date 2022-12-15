@@ -4,7 +4,7 @@ import Confession from '../api/Confessions'
 export const usePostConfessions = () => {
   const [ error, setError ] = useState(null)
   const [ isLoading, setIsLoading ] = useState(null)
-  const [ message, setMessage ] = useState([])
+  const [ message, setMessage ] = useState(null)
 
   const postConfessions = async (category, body) => {
     setIsLoading(true);
@@ -14,7 +14,9 @@ export const usePostConfessions = () => {
       body: body
     }
 
-    const data = await Confession.confessions.allConfessions(postData)
+    console.log(postData)
+
+    const data = await Confession.confessions.postConfession(postData)
     
     if(data.success === true){
       setMessage(data.data)
@@ -24,6 +26,10 @@ export const usePostConfessions = () => {
       
     }
     setIsLoading(false)
+    setTimeout(() => {
+      setError('')
+      setMessage('')
+    }, 3000)
   }
 
   return { postConfessions, message, isLoading, error }
