@@ -5,47 +5,47 @@
     "value": "all"
   },
   {
-    "link": "/dream",
+    "link": "/category/dream",
     "title": "a dream",
     "value": "dream"
   },
   {
-    "link": "/fantasies",
+    "link": "/category/fantasies",
     "title": "a fantasies",
     "value": "fantasies"
   },
   {
-    "link": "/experience",
+    "link": "/category/experience",
     "title": "first experience",
     "value": "experience"
   },
   {
-    "link": "/quilt",
-    "title": "a quilt",
-    "value": "quilt"
+    "link": "/category/guilt",
+    "title": "a guilt",
+    "value": "guilt"
   },
   {
-    "link": "/lie",
+    "link": "/category/lie",
     "title": "a lie",
     "value": "lie"
   },
   {
-    "link": "/pain",
+    "link": "/category/pain",
     "title": "a pain",
     "value": "pain"
   },
   {
-    "link": "/random",
+    "link": "/category/random",
     "title": "random",
     "value": "random"
   },
   {
-    "link": "/truth",
+    "link": "/category/truth",
     "title": "a truth",
     "value": "truth"
   },
   {
-    "link": "/other",
+    "link": "/category/other",
     "title": "other",
     "value": "other"
   }
