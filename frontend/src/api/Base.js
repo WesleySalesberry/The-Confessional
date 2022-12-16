@@ -3,7 +3,7 @@ export class Base {
     #baseOpt;
     #headers;
     constructor() {
-        this.#baseUrl = `http://localhost:3001/api/v1`
+        this.#baseUrl = `/api/v1`
         this.#headers = {
             'Content-Type': 'application/json'
         }
