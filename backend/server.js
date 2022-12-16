@@ -4,7 +4,10 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import morgan from 'morgan'
 
+import mongoSanitize from 'express-mongo-sanitize'
+import xss from 'xss-clean'
 import cors from 'cors'
+import hpp from 'hpp'
 
 // import { notFound, errorHandler } from './middleware/error.js'
 import connectDB from './configs/connectDB.js'
@@ -13,11 +16,24 @@ dotenv.config()
 
 connectDB()
 
+const whitelist = [ "http://localhost:3000" ]
+
 const app = express()
 
-app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(mongoSanitize())
+app.use(xss())
+app.use(hpp());
+app.use(cors(
+    {
+        origin: whitelist, 
+        methods: ["GET", "POST"],
+        optionsSuccessStatus: 200
+    }
+))
+app.disable("x-powered-by");
 
 
 if (process.env.NODE_ENV === 'development') {
