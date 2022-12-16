@@ -19,7 +19,7 @@ export const NoteCard = ({ itm }) => {
         <Col>
           <div className={`badge card_title rounded ${itm.category}`}>
             <Link
-              to={`/${itm.category}`}
+              to={`/category/${itm.category}`}
               className="link text-white"
             >
               <Card.Title>
