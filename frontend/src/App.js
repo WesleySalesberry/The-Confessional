@@ -8,9 +8,9 @@ import { ConfessionPage } from "./pages/ConfessionPage";
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<IndexPage />}>
-        <Route path="/:category" element={<IndexPage />}/>
-      </Route>
+      <Route path="/" element={<IndexPage />} />
+      <Route path="/:category" element={<IndexPage />}/>
+      <Route path="search/:search" element={<IndexPage />}/>
       <Route path="/about" element={<AboutPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/contact" element={<ContactPage /> } />

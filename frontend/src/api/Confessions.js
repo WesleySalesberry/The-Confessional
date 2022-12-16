@@ -4,7 +4,7 @@ class Confession extends Base{
 
   get confessions() {
     return{
-      allConfessions: (category='') => this.get(`confession?category=${category}`),
+      allConfessions: (category='', search="") => this.get(`confession?category=${category}&search=${search}`),
       singleConfession: (id) => this.get(`confession/${id}`),
       postConfession: (body) => this.post(`confession`, body)
     }

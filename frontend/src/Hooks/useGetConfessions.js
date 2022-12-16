@@ -6,13 +6,13 @@ export const useGetConfessions = () => {
   const [ isLoading, setIsLoading ] = useState(null)
   const [ confessions, setConfessions ] = useState([])
 
-  const getConfessions = async (category) => {
+  const getConfessions = async (category, search) => {
     setIsLoading(true);
 
-    const data = await Confession.confessions.allConfessions(category)
+    const data = await Confession.confessions.allConfessions(category, search)
+
     if(data.success === true){
       setConfessions(data.data)
-      
     }else{
       setError(data.message)
       

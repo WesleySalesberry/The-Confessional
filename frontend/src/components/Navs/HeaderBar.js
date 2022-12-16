@@ -1,13 +1,23 @@
+import { useContext, useState } from "react"
+
+import { LinkContainer } from 'react-router-bootstrap'
+import { FaFacebookSquare, FaTwitterSquare, FaSearch } from "react-icons/fa";
+
 import Container from 'react-bootstrap/esm/Container';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import { LinkContainer } from 'react-router-bootstrap'
 
-import { FaFacebookSquare, FaTwitterSquare, FaSearch } from "react-icons/fa";
-import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export const HeaderBar = () => {
-  const [ search, setSearch ] = useState('');
+  const navigate = useNavigate()
+
+  const handleKeyDown = (evt) => {
+    if(evt.key === 'Enter'){
+      navigate(`/search/${evt.target.value}`)
+    }
+  }
+
   return (
     <Navbar>
       <Container fluid>
@@ -43,8 +53,7 @@ export const HeaderBar = () => {
               placeholder="Search"
               aria-label="Search Text"
               aria-describedby="searchText"
-              value={search}
-              onChange={(evt) => setSearch(evt.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </Nav>
         </Navbar.Collapse>
