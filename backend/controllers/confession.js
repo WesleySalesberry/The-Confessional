@@ -3,27 +3,40 @@ import Confession from '../modules/Confessions.js'
 import asyncHandler from 'express-async-handler'
 
 /**
- * @desc   Fetch all Confessions
+ * @desc   Get confessions ether by searching or category
+ *          default will return all item
  * @route  GET /api/v1/confession
  * @access Public
  */
 export const allConfessions = asyncHandler( async (req, res, next) => {
-
+  const { search, category, pageNumber } = req.query
   const pageSize = 10;
-  const page = Number(req.query.pageNumber) || 1
+  const page = Number(pageNumber) || 1
 
-  const category = req.query.category ? 
-  {
-    category: {
-      $regex: req.query.category,
-      $options: 'i',
-    }
-  }:
-  {}
+  let query;
 
-  const count = await Confession.countDocuments({ ...category })
+  if(category){
+    query = {
+        category: {
+          $regex: req.query.category,
+          $options: 'i',
+        }
+      }
+  }else if(search){
+    query = {
+      $text:
+        {
+          $search: req.query.search,
+          $caseSensitive: false
+        }
+      }
+  }else {
+    query = {}
+  }
 
-  const confessions = await Confession.find({ ...category })
+  const count = await Confession.countDocuments({ ...query })
+
+  const confessions = await Confession.find({ ...query })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })

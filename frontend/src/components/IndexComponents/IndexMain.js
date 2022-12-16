@@ -1,21 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect } from "react"
 import { useParams } from 'react-router-dom'
-
-
 
 import { BaseLayout } from '../Layouts/BaseLayout'
 import { useGetConfessions } from '../../Hooks/useGetConfessions'
 import { CardDisplay } from './CardDisplay'
 import { DisplayForm } from '../FormComponent/DisplayForm'
 
-
 export const IndexMain = () => {
-  const { category } = useParams()
+  const params = useParams()
+
   const { getConfessions, confessions, isLoading, error } = useGetConfessions()
 
   useEffect(() => {
-    getConfessions(category);
-  },[ category ])
+    getConfessions(params.category, params.search);
+  },[ params ])
 
   if(confessions <= 0){
     return (
