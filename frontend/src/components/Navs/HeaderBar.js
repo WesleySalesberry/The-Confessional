@@ -1,12 +1,8 @@
-import { useContext, useState } from "react"
-
 import { LinkContainer } from 'react-router-bootstrap'
 import { FaFacebookSquare, FaTwitterSquare, FaSearch } from "react-icons/fa";
-
 import Container from 'react-bootstrap/esm/Container';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import Nav from 'react-bootstrap/Nav';
-
 import { useNavigate } from "react-router-dom";
 
 export const HeaderBar = () => {
@@ -19,14 +15,14 @@ export const HeaderBar = () => {
   }
 
   return (
-    <Navbar>
+    <Navbar bg="light" expand="lg" className="rounded">
       <Container fluid>
         <LinkContainer to="/">
           <Navbar.Brand className="title">The Confessional</Navbar.Brand>
         </LinkContainer>
-        <Navbar.Toggle aria-controls="navbar" />
-        <Navbar.Collapse id="navbar">
-          <Nav className="me-auto">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+           <Nav className="me-auto">
             <LinkContainer to="/about">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
@@ -54,7 +50,7 @@ export const HeaderBar = () => {
               aria-label="Search Text"
               aria-describedby="searchText"
               onKeyDown={handleKeyDown}
-            />
+            /> 
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -9,7 +9,7 @@ export const DisplayForm = () => {
   const [ show, setShow ] = useState(false)
   
   return (
-    <div className='my-3 mx-3'>
+    <div className='my-3'>
       <Button
         variant="danger" 
         className="w-100 rounded"

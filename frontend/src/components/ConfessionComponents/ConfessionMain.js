@@ -1,12 +1,14 @@
-import { Card, Col, Row } from "react-bootstrap"
-import { BaseLayout } from "../Layouts/BaseLayout"
-import { Meta } from '../metatags'
+import { useEffect } from "react";
 
 import { FaRegEye, FaCommentDots } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Card, Col, Row } from "react-bootstrap"
+
+import { BaseLayout } from "../Layouts/BaseLayout"
+import { Meta } from '../metatags'
 import { useGetConfession } from "../../Hooks/useGetConfession";
-import { useEffect } from "react";
+import { capitalizeFirstLetter } from "../../utils/helpers";
 
 export const ConfessionMain = () => {
   const { id } = useLocation().state
@@ -22,8 +24,8 @@ export const ConfessionMain = () => {
     return (
       <BaseLayout>
         <Meta 
-          title="Category"
-          description="A excerpt of the confession"
+          title={`A ${confession.category}`}
+          description={``}
           url={window.location.href}
         />
         <Card className="rounded shadow-sm">
@@ -33,7 +35,7 @@ export const ConfessionMain = () => {
             </Col>
             <Col className="text-center">
               <Link
-                to={`/${confession.category}`}
+                to={`/category/${confession.category}`}
                 className="link"
               >
                 <div className={`badge card_title rounded ${confession.category}`}>
